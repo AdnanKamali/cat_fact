@@ -14,7 +14,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Provider.of<FetchData>(context).getFacts("1");
     return MaterialApp(
       theme: ThemeData(
         textTheme: ThemeData.light().textTheme.copyWith(
@@ -195,30 +194,30 @@ class FactsDetailScreen extends StatelessWidget {
         title: const Text("About this fact"),
         backgroundColor: Colors.grey,
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 300,
-            width: double.infinity,
-            child: Image.network(
-              imageUrl,
-              fit: BoxFit.cover,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              width: double.infinity,
+              child: Image.network(
+                imageUrl,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SingleChildScrollView(
+            const SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Text(
                 fact,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headline1,
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
